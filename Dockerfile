@@ -14,11 +14,13 @@ RUN \
                 bash \
                 build-essential \
                 ca-certificates \
+		curl \
                 file \
                 gawk \
                 gcc-multilib \
                 gdb \
                 git \
+		jq \
                 libaio-dev \
                 libasound2-dev \
                 libc6-dev-i386 \
