@@ -17,5 +17,5 @@ jobs:
     - run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: docker build . --tag docker.pkg.github.com/org-crac/docker-build/image:latest
-    - run: docker push docker.pkg.github.com/org-crac/docker-build/image:latest
+    - run: docker build . --tag docker.pkg.github.com/crac/docker-build/image:latest
+    - run: docker push docker.pkg.github.com/crac/docker-build/image:latest
