@@ -2,9 +2,11 @@ FROM ubuntu:16.04
 
 RUN \
         apt-get update && \
-        apt-get -y --no-install-recommends install gnupg2 && \
+        apt-get -y --no-install-recommends install apt-transport-https ca-certificates gnupg2 curl && \
         apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9 && \
-        echo "deb http://repos.azulsystems.com/ubuntu stable main" >> /etc/apt/sources.list.d/zulu.list && \
+        curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-2_all.deb && \
+        apt-get install ./zulu-repo_1.0.0-2_all.deb && \
+        rm ./zulu-repo_1.0.0-2_all.deb && \
         apt-get update && \
         DEBIAN_FRONTEND=noninteractive \
         apt-get -y --no-install-recommends install \
@@ -13,7 +15,6 @@ RUN \
 		autoconf \
 		bash \
 		build-essential \
-		ca-certificates \
 		curl \
 		file \
 		gawk \
@@ -43,7 +44,8 @@ RUN \
 		unzip \
 		util-linux \
 		zip \
-		zulu-13 \
-		zulu-8 \
+		zulu16-jdk \
+		zulu13-jdk \
+		zulu8-jdk \
         && apt-get clean \
         && rm -rf /var/lib/apt /var/cache/apt
