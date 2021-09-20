@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN \
         apt-get update && \
@@ -44,7 +44,7 @@ RUN \
 		unzip \
 		util-linux \
 		zip \
-		zulu16-jdk \
+		zulu17-jdk \
 		zulu13-jdk \
 		zulu8-jdk \
         && apt-get clean \
