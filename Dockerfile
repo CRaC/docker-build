@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
+
 
 RUN \
         apt-get update && \
@@ -7,6 +8,8 @@ RUN \
         curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-2_all.deb && \
         apt-get install ./zulu-repo_1.0.0-2_all.deb && \
         rm ./zulu-repo_1.0.0-2_all.deb && \
+        apt-get install -y software-properties-common && \
+        add-apt-repository ppa:ubuntu-toolchain-r/test && \
         apt-get update && \
         DEBIAN_FRONTEND=noninteractive \
         apt-get -y --no-install-recommends install \
@@ -19,6 +22,7 @@ RUN \
 		file \
 		gawk \
 		gcc-multilib \
+		g++-7 \
 		gdb \
 		git \
 		jq \
