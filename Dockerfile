@@ -2,11 +2,9 @@ FROM ubuntu:18.04
 
 RUN \
         apt-get update && \
-        apt-get -y --no-install-recommends install apt-transport-https ca-certificates gnupg2 curl && \
-        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9 && \
-        curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-2_all.deb && \
-        apt-get install ./zulu-repo_1.0.0-2_all.deb && \
-        rm ./zulu-repo_1.0.0-2_all.deb && \
+        apt-get -y --no-install-recommends install gnupg ca-certificates curl && \
+        curl -s https://repos.azul.com/azul-repo.key | gpg --dearmor -o /usr/share/keyrings/azul.gpg && \
+        echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | tee /etc/apt/sources.list.d/zulu.list && \
         apt-get update && \
         DEBIAN_FRONTEND=noninteractive \
         apt-get -y --no-install-recommends install \
@@ -18,13 +16,12 @@ RUN \
 		curl \
 		file \
 		gawk \
-		gcc-multilib \
 		gdb \
 		git \
 		jq \
 		libaio-dev \
 		libasound2-dev \
-		libc6-dev-i386 \
+		libc6-dev \
 		libcap-dev \
 		libcups2-dev \
 		libfontconfig1-dev \
@@ -45,7 +42,5 @@ RUN \
 		util-linux \
 		zip \
 		zulu17-jdk \
-		zulu13-jdk \
-		zulu8-jdk \
         && apt-get clean \
         && rm -rf /var/lib/apt /var/cache/apt
