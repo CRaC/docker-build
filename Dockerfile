@@ -5,9 +5,9 @@ RUN \
         apt-get update && \
         apt-get -y --no-install-recommends install apt-transport-https ca-certificates gnupg2 curl && \
         apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9 && \
-        curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-2_all.deb && \
-        apt-get install ./zulu-repo_1.0.0-2_all.deb && \
-        rm ./zulu-repo_1.0.0-2_all.deb && \
+        curl -O https://cdn.azul.com/zulu/bin/zulu-repo_1.0.0-3_all.deb && \
+        apt-get install ./zulu-repo_1.0.0-3_all.deb && \
+        rm ./zulu-repo_1.0.0-3_all.deb && \
         apt-get install -y software-properties-common && \
         add-apt-repository ppa:ubuntu-toolchain-r/test && \
         apt-get update && \
@@ -21,14 +21,13 @@ RUN \
 		curl \
 		file \
 		gawk \
-		gcc-multilib \
 		g++-7 \
 		gdb \
 		git \
 		jq \
 		libaio-dev \
 		libasound2-dev \
-		libc6-dev-i386 \
+		libc6-dev \
 		libcap-dev \
 		libcups2-dev \
 		libfontconfig1-dev \
@@ -49,7 +48,5 @@ RUN \
 		util-linux \
 		zip \
 		zulu17-jdk \
-		zulu13-jdk \
-		zulu8-jdk \
         && apt-get clean \
         && rm -rf /var/lib/apt /var/cache/apt
