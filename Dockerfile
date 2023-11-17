@@ -47,6 +47,7 @@ RUN \
 		unzip \
 		util-linux \
 		zip \
+		zulu21-jdk \
 		zulu17-jdk \
         && apt-get clean \
         && rm -rf /var/lib/apt /var/cache/apt
