@@ -48,6 +48,7 @@ RUN \
 		unzip \
 		util-linux \
 		zip \
+		zulu21-jdk \
 		zulu17-jdk \
 		zulu13-jdk \
 		zulu8-jdk \
