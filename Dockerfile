@@ -47,6 +47,7 @@ RUN \
 		unzip \
 		util-linux \
 		zip \
+		zulu23-jdk \
 		zulu21-jdk \
 		zulu17-jdk \
         && apt-get clean \
